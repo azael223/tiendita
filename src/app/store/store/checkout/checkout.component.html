@@ -14,7 +14,7 @@
 <form
   *ngIf="!orderSent"
   #form="ngForm"
-  novalidate(ngSubmit)="submitOrder(form)"
+  (ngSubmit)="submitOrder(form)"
   class="m-2"
 >
   <div class="form-group">
