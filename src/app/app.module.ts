@@ -6,6 +6,7 @@ import { StoreModule } from './store/store.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router'
 import { StoreFirstGuard } from './store-first.guard';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -13,7 +14,8 @@ import { StoreFirstGuard } from './store-first.guard';
   imports: [
     BrowserModule,StoreModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [StoreFirstGuard],
   bootstrap: [AppComponent]

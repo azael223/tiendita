@@ -10,6 +10,7 @@
       <button
         class="btn btn-block btn-outline-primary"
         (click)="changeCategory()"
+        [class.active]="null == selectedCategory"
       >
         Home
       </button>

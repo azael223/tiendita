@@ -26,10 +26,10 @@ export class StoreComponent {
       .getProducts(this.selectedCategory)
       .slice(pageIndex, pageIndex + this.productsPerPage);
   }
-  get categories(): String[] {
+  get categories(): string[] {
     return this.repository.getCategories();
   }
-  changeCategory(newCategory?: String): void {
+  changeCategory(newCategory?: string): void {
     this.selectedCategory = newCategory;
   }
   changePage(newPage: number): void {
