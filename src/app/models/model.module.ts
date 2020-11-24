@@ -4,7 +4,6 @@ import { ProductRepository } from './product.repository';
 import { Cart } from './cart.model';
 import { Order } from './order.model';
 import { OrderRepository } from './order.repository';
-import { HttpClientModule } from '@angular/common/http';
 import { RestDataSource } from './rest.datasource';
 @NgModule({
   providers: [
@@ -13,7 +12,6 @@ import { RestDataSource } from './rest.datasource';
     Cart,
     Order,
     OrderRepository,
-    HttpClientModule,
     RestDataSource
   ],
 })
