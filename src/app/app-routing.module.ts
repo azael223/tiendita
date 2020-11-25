@@ -6,9 +6,7 @@ import { CartDetailComponent } from './store/store/cart-detail/cart-detail.compo
 import { CheckoutComponent } from './store/store/checkout/checkout.component';
 
 const routes: Routes = [
-  { path: 'store',
-    component: StoreComponent,
-    canActivate: [StoreFirstGuard] },
+  { path: 'store', component: StoreComponent, canActivate: [StoreFirstGuard] },
   {
     path: 'checkout',
     component: CheckoutComponent,
@@ -17,6 +15,12 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartDetailComponent,
+    canActivate: [StoreFirstGuard],
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
     canActivate: [StoreFirstGuard],
   },
   { path: '**', redirectTo: '/store', pathMatch: 'full' },
