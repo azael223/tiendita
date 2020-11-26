@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Product } from './product.model';
@@ -19,6 +19,20 @@ export class RestDataSource {
   saveOrder(order: Order): Observable<Order> {
     return this.http.post<Order>(this.baseUrl + 'orders', order);
   }
+  saveProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(
+      this.baseUrl + 'products',
+      product,
+      this.getOptions()
+    );
+  }
+  updateProduct(product):Observable<Product>{
+    return this.http.put<Product>(
+      `${this.baseUrl}products/${product.id}`,
+      product,
+      this.getOptions()
+    );
+  }
   authenticate(user: string, pass: string): Observable<boolean> {
     return this.http
       .post<any>(this.baseUrl + 'login', {
@@ -31,5 +45,12 @@ export class RestDataSource {
           return response.success;
         })
       );
+  }
+  private getOptions() {
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer<${this.auth_token}>`,
+      }),
+    };
   }
 }
